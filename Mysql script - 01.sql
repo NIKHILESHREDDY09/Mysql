@@ -105,3 +105,62 @@ insert into info(first_name, last_name, year_of_birth,product_name,quantity_purc
 
 select count(*) from info;
 select * from info;
+select distinct first_name from info;
+alter table info
+add column store varchar(50) default "store";
+
+update info
+set store = case
+when  quantity_purchased = 1 then 'store A'
+when quantity_purchased = 2 then "store B"
+when quantity_purchased = 3 then "store C"
+end;
+select * from info;
+select distinct store from info;
+select count(distinct concat(first_name," ", store )) as practice from info;
+select count(*) from info;
+select * from info order by quantity_purchased;
+select * from info order by quantity_purchased desc;
+update info
+set store = "store D" where quantity_purchased = 4;
+select * from info order by quantity_purchased desc;
+select * from info;
+select * from info limit  10;
+select first_name from info limit 10;
+select id from info limit 10;
+select distinct product_name from info limit 10;
+select * from info where first_name like '%a%';
+select id,last_name,year_of_birth,store from info where first_name like '%a%';
+select * from info where first_name like '%/%%';
+select * from info where first_name like 'a%';
+select * from info where first_name like '%a';
+select count(store) from info;
+select store, first_name,last_name from info group by store;
+create table pubg(
+player_id int auto_increment,
+player_name varchar (100),
+eliminations int,
+chicken_dinner varchar(4),
+items_owned int,
+primary key(player_id)
+);
+INSERT INTO pubg (player_name, eliminations, chicken_dinner, items_owned) VALUES
+('AceHunter', 12, 'Yes', 25),
+('ShadowWolf', 8, 'No', 18),
+('SniperQueen', 15, 'Yes', 30),
+('IronFist', 5, 'No', 12),
+('RapidFire', 20, 'Yes', 40),
+('StealthNinja', 7, 'No', 16),
+('BlazeStorm', 10, 'Yes', 22),
+('SilentKiller', 3, 'No', 9),
+('WarMachine', 18, 'Yes', 35),
+('LuckyShot', 6, 'No', 14);
+select * from pubg;
+select count(player_id),player_name, sum(eliminations) from pubg group by player_name;
+select max(eliminations) from pubg;
+select * from pubg;
+describe info;
+select max(quantity_purchased) from info;
+select min(eliminations) from pubg;
+select min(quantity_purchased) from info;
+
