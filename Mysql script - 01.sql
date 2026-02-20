@@ -163,4 +163,43 @@ describe info;
 select max(quantity_purchased) from info;
 select min(eliminations) from pubg;
 select min(quantity_purchased) from info;
+use customers;
+select * from info;
+select first_name from info where first_name like 'a%';
+select * from info;
+select count(Bill_amount) from info;
+select concat(first_name,last_name), count(quantity_purchased) from info group by product_name ;
+select * from info;
+select * from info where store != 'store B';
+select * from info where first_name not like "%a%";
+select first_name,last_name, year_of_birth, product_name,quantity_purchased, Bill_amount, email from info where Bill_amount>60000;
+select * from info;
+select * from info where Bill_amount>50000 and first_name like 'a%';
+select * from info where char_length(first_name)>6 and char_length(last_name)>6;
+select * from info where year_of_birth between 1900 and 1990;
+select * from info where first_name in ('alex');
+select * from info;
+select concat(first_name,last_name) as fullname, product_name,
+Case quantity_purchased
+when 1 then 'single order'
+when 2 then 'double order'
+when 3 then 'triple order'
+end as 'order category'
+from info;
+select * from info;
+describe info;
+alter table info add constraint unique_email unique(email);
+
+create table free(
+ff_id int  auto_increment primary key,
+username varchar(100) unique,
+eliminations int,
+booyah varchar(10),
+items_owned int
+);
+select * from free;
+rename table free to free_fire;
+select * from free_fire;
+alter table free_fire
+add column age int check(age>=18);
 
